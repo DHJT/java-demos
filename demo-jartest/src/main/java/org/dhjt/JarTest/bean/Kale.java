@@ -11,10 +11,11 @@ public class Kale {
 	private String className;
 
 	Kale() {
-
+	    System.out.println("2018年6月18日 下午7:30:01->调用Kale的空构造器");
 	}
 
 	Kale(String clsName) {
+	    System.out.println("2018年6月18日 下午7:30:01->有参构造器");
 		this.className = clsName;
 	}
 

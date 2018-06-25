@@ -2,7 +2,10 @@ package org.dhjt.JarTest;
 
 import static org.joor.Reflect.on;
 
+import java.util.Map;
+
 import org.dhjt.JarTest.bean.Kale;
+import org.dhjt.JarTest.bean.customBean.fixed.FileWS;
 import org.joor.Reflect;
 
 /**
@@ -13,15 +16,15 @@ import org.joor.Reflect;
  */
 public class JoorTest {
 
-	public static void main(String[] args) {
-		String world = on("java.lang.String")  // Like Class.forName()
+    public void test() {
+        String world = on("java.lang.String")  // Like Class.forName()
                 .create("Hello World") // Call most specific matching constructor
                 .call("substring", 6)  // Call most specific matching substring() method
                 .call("toString")      // Call toString()
                 .get();                // Get the wrapped object, in this case a String
-		System.out.println("2018年5月4日 下午10:43:24->" + world);
+        System.out.println("2018年5月4日 下午10:43:24->" + world);
 
-		String name = null;
+        String name = null;
         Kale kale;
         // 【创建类】
         kale = Reflect.on(Kale.class).create().get(); // 无参数
@@ -41,5 +44,12 @@ public class JoorTest {
         Reflect.on(kale).set("className", "hello");
         System.err.println("设置变量的值： name = " + kale.getClassName());
         System.err.println("设置变量的值： name = " + Reflect.on(kale).set("className", "hello2").get("className"));
+    }
+
+	public static void main(String[] args) {
+	    FileWS fileWs = Reflect.on(FileWS.class).create().get();
+	    Map<String, Reflect> maps = Reflect.on(FileWS.class).fields();
+	    System.out.println("2018年6月18日 下午11:05:33->" + maps.isEmpty());
+
 	}
 }
