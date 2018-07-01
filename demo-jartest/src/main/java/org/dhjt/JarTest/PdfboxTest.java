@@ -2,6 +2,8 @@ package org.dhjt.JarTest;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -20,6 +22,9 @@ import org.apache.pdfbox.pdmodel.encryption.StandardProtectionPolicy;
 import org.apache.pdfbox.pdmodel.encryption.StandardSecurityHandler;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.interactive.digitalsignature.ExternalSigningSupport;
+import org.apache.pdfbox.pdmodel.interactive.digitalsignature.PDSignature;
+import org.apache.pdfbox.pdmodel.interactive.digitalsignature.SignatureOptions;
 import org.apache.pdfbox.text.PDFTextStripper;
 
 /**
@@ -36,8 +41,14 @@ import org.apache.pdfbox.text.PDFTextStripper;
  */
 public class PdfboxTest {
 
+    private static final String ownerPassWord = "123";
+    private static final String userPassWord = "456";
     public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
+    /**
+     * 设置权限
+     * @param permissions
+     */
     public static void setAccessPermission(AccessPermission permissions) {
         permissions.setCanExtractContent(false); // 文档提取文字权限
         permissions.setCanModify(false); // 文档修改权限
@@ -167,14 +178,13 @@ public class PdfboxTest {
 
     /**
      * 加密后的pdf文件Encrypt
-     *
-     * Decrypt：  解密一个PDF文档
-     *
+     * @param ownerPassWord
+     * @param userPassWord
+     * @param srcpath
+     * @param despath
      * @throws IOException
      */
-    public static void pdfEncrypt(String srcpath, String despath) throws IOException {
-        String ownerPassWord = "123";
-        String userPassWord = "456";
+    public static void pdfEncrypt(String ownerPassWord, String userPassWord, String srcpath, String despath) throws IOException {
         File file = new File(srcpath);
         PDDocument load = PDDocument.load(file);
         AccessPermission permissions = new AccessPermission();
@@ -201,14 +211,14 @@ public class PdfboxTest {
      */
     public static void pdfDecrypt(String fileName, String password) throws InvalidPasswordException, IOException {
         File file = new File(fileName);
-        PDDocument load = PDDocument.load(file, password);
+        PDDocument document = PDDocument.load(file, password);
+        document.isAllSecurityToBeRemoved();
     }
     // PDFSplit怎么拆分PDF文件
 
     public static void createHelloPDF() {
         PDDocument doc = null;
         PDPage page = null;
-
         try {
             doc = new PDDocument();
             page = new PDPage();
@@ -229,9 +239,58 @@ public class PdfboxTest {
         }
     }
 
+    /**
+     * 电子签名
+     * @param document
+     * @param output
+     * @throws IOException
+     */
+    public static void signDetached(PDDocument document, OutputStream output) throws IOException {
+        boolean externalSig=false;
+        // create signature dictionary
+        PDSignature signature = new PDSignature();
+        signature.setFilter(PDSignature.FILTER_ADOBE_PPKLITE);
+        signature.setSubFilter(PDSignature.SUBFILTER_ADBE_PKCS7_DETACHED);
+        signature.setName("Example User");
+        signature.setLocation("Los Angeles, CA");
+        signature.setReason("Testing");
+
+        // the signing date, needed for valid signature
+        signature.setSignDate(Calendar.getInstance());
+
+        if (true)
+        {
+            System.out.println("Sign externally...");
+            document.addSignature(signature);
+            ExternalSigningSupport externalSigning =
+                    document.saveIncrementalForExternalSigning(output);
+            // invoke external signature service
+//            byte[] cmsSignature = sign(externalSigning.getContent());
+            // set signature bytes received from the service
+//            externalSigning.setSignature(cmsSignature);
+        }
+        else
+        {
+            SignatureOptions signatureOptions = new SignatureOptions();
+            // Size can vary, but should be enough for purpose.
+            signatureOptions.setPreferredSignatureSize(SignatureOptions.DEFAULT_SIGNATURE_SIZE * 2);
+            // register signature dictionary and sign interface
+//            document.addSignature(signature, this, signatureOptions);
+
+            // write incremental (only for signing purpose)
+            document.saveIncremental(output);
+        }
+    }
+
+    public void sign(InputStream content)
+    {
+        // cannot be done private (interface)
+    }
+
     public static void main(String[] args) {
         String srcpath = "C:/Workspaces/TestTemp/test.pdf";
         String despath = "C:/Workspaces/TestTemp/test2.pdf";
+        PDDocument document = null;
         try {
             // pdfEncrypt(srcpath, despath);
             getPDDocumentInformation(PDDocument.load(new File("C:/Workspaces/TestTemp/test.pdf")));
@@ -239,11 +298,18 @@ public class PdfboxTest {
             createHelloPDF();
             setPDDocumentInformation(PDDocument.load(new File("C:/Workspaces/TestTemp/setPdfInfo.pdf")), "C:/Workspaces/TestTemp/setPdfInfo.pdf");
           //Closing the document
-//            document.close();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if (document != null) {
+                try {
+                    document.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }

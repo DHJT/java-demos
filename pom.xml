@@ -13,6 +13,7 @@
     <module>demo-deepLearning4j</module>
     <module>demo-itext</module>
     <module>demo-itext7</module>
+    <module>demo-util</module>
   </modules>
 
 	<properties>
