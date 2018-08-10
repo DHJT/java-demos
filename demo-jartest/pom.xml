@@ -15,7 +15,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<ip2region.version>1.4</ip2region.version>
-		<hutool.version>4.0.10</hutool.version>
+		<hutool.version>4.1.1</hutool.version>
 		<junit.version>4.12</junit.version>
 		<commons.version>3.5</commons.version>
 		<pdfbox.version>2.0.9</pdfbox.version>
@@ -34,6 +34,13 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>${commons.version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
+		<dependency>
+		    <groupId>net.coobird</groupId>
+		    <artifactId>thumbnailator</artifactId>
+		    <version>0.4.8</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
@@ -55,6 +62,13 @@
 		    <groupId>org.apache.pdfbox</groupId>
 		    <artifactId>xmpbox</artifactId>
 		    <version>${pdfbox.version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/net.oschina.likaixuan/excelutil -->
+		<dependency>
+		    <groupId>net.oschina.likaixuan</groupId>
+		    <artifactId>excelutil</artifactId>
+		    <version>1.5.5</version>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on -->
@@ -112,6 +126,14 @@
 		    <artifactId>jxl</artifactId>
 		    <version>2.6.12</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+		<dependency>
+		    <groupId>redis.clients</groupId>
+		    <artifactId>jedis</artifactId>
+		    <version>2.9.0</version>
+		</dependency>
+		
 
 		<dependency>
 			<groupId>junit</groupId>

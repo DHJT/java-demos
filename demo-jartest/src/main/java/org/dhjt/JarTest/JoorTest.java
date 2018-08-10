@@ -48,8 +48,10 @@ public class JoorTest {
 
 	public static void main(String[] args) {
 	    FileWS fileWs = Reflect.on(FileWS.class).create().get();
-	    Map<String, Reflect> maps = Reflect.on(FileWS.class).fields();
-	    System.out.println("2018年6月18日 下午11:05:33->" + maps.isEmpty());
 
+	    // 得到类的所有的字段
+	    Map<String, Reflect> maps = Reflect.on(FileWS.class).create().fields();
+	    //	Lambda表达式
+	    maps.forEach((k,v)->System.out.println("Field : " + k + " Count : "));
 	}
 }

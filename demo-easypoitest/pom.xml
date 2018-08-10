@@ -12,7 +12,7 @@
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <easypoi.version>3.1.0</easypoi.version>
+    <easypoi.version>3.2.0</easypoi.version>
   </properties>
   <dependencies>
   	<dependency>

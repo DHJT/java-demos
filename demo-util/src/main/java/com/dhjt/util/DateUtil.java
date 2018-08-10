@@ -7,14 +7,33 @@ import java.util.Date;
 /**
  *	日期、时间工具类
  * @author DHJT 2018-02-26
- *
+          SimpleDateFormat函数语法：
+
+          G 年代标志符
+          y 年
+          M 月
+          d 日
+          h 时 在上午或下午 (1~12)
+          H 时 在一天中 (0~23)
+          m 分
+          s 秒
+          S 毫秒
+          E 星期
+          D 一年中的第几天
+          F 一月中第几个星期几
+          w 一年中第几个星期
+          W 一月中第几个星期
+          a 上午 / 下午 标记符
+          k 时 在一天中 (1~24)
+          K 时 在上午或下午 (0~11)
+          z 时区
  */
 public class DateUtil {
 	// 最后的aa表示“上午”或“下午” HH表示24小时制 如果换成hh表示12小时制
 	// SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss aa");
 	final public static SimpleDateFormat DF_DATE = new SimpleDateFormat("yyyy-MM-dd");
 	final public static SimpleDateFormat DF_TIME = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	final public static SimpleDateFormat DF_FILE_TIME = new SimpleDateFormat("yyyyMMddhhmmss");
+	final public static SimpleDateFormat DF_FILE_TIME = new SimpleDateFormat("yyyyMMddhhmmssSS"); // 20180713045541350
 
 	/**
 	 * 获取当前时间：yyyy-MM-dd HH:mm:ss
