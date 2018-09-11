@@ -180,7 +180,8 @@ public class Typedetection {
 	 * @throws SAXException
 	 */
 	public static void PdfParse(String pdfFile) throws IOException, TikaException, SAXException {
-		BodyContentHandler handler = new BodyContentHandler();
+//		BodyContentHandler handler = new BodyContentHandler();
+		BodyContentHandler handler = new BodyContentHandler(10000000);// 增加写入的大小 int writeLimit
 		Metadata metadata = new Metadata();
 		FileInputStream inputstream = new FileInputStream(new File(pdfFile));
 		ParseContext pcontext = new ParseContext();

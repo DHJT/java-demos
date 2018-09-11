@@ -1,4 +1,4 @@
-package org.demo.spring;
+package org.demo.spring.bean;
 
 public class Student {
 	private Integer age;

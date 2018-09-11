@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.demo.hibernateAndHSearch.bean">
+	<!-- <class name="org.demo.hibernateAndHSearch.LuceneBean" table="View_Archives_TEST"> -->
+	<class name="LuceneBean" table="View_Archives_TEST">
+		<meta attribute="sync-DAO">false</meta>
+		<subselect>
+SELECT     w.ID,w.status as 'status',w.address as 'address', w.ref AS 'ref', w.TITLE, w.ARCHIVE_TYPE_ID AS 'archiveTypeId', w.FILING_DEPT AS 'filingDept', w.fonds_code AS 'fondsCode', w.CREATE_USER AS 'createUser', 
+           w.CREATE_DATE AS 'cretaeDate', w.ARCHIVE_TYPE_NAME AS 'archiveTypeName', w.MODIFY_USER AS 'modiyUser', w.MODIFY_DATE AS 'modiyDate', w.IS_DELETE AS 'isDelete', 
+           w.YEAR_CODE AS 'yearCode', 'F' AS 'archiveType', 'FileWS' AS 'className', '' AS ZJCS, '' AS FJCS, '' AS GPS, '' ZWDS,
+            (select stuff((select ',''' +cast(item.OCRTEXT as varchar(MAX))+'''' from T_QR_FILE_WSDA_DOC as item where item.OWNER_ID=w.ID group by cast(item.OCRTEXT as varchar(MAX)) for xml  path('')
+        ),1,1,'') as item) AS OCRTEXT, RETENTION_PERIOD, FILE_NO AS 'fNo', DOC_EXIST AS 'docExist', PAGE_COUNT, BOX_NO, SECURITY_CLASSIFICATION, BZ,
+            '' as ITEM_TITLES, NOTES, DOCUMENT_NO, DUTY_PERSON
+FROM         T_QR_FILE_WSDA w
+/*------文书一文一件*/ UNION ALL
+SELECT     ws.ID,ws.status as 'status', ws.address as 'address',ws.ref AS 'ref', ws.TITLE, ws.ARCHIVE_TYPE_ID AS 'archiveTypeId', ws.FILING_DEPT AS 'filingDept', ws.fonds_code AS 'fondsCode', ws.CREATE_USER AS 'createUser', 
+           ws.CREATE_DATE AS 'cretaeDate', ws.ARCHIVE_TYPE_NAME AS 'archiveTypeName', ws.MODIFY_USER AS 'modiyUser', ws.MODIFY_DATE AS 'modiyDate', ws.IS_DELETE AS 'isDelete', 
+           ws.YEAR_CODE AS 'yearCode', 'V' AS 'archiveType', 'FolderWS' AS 'className', '' AS ZJCS, '' AS FJCS, '' AS GPS, '' ZWDS, 
+			(select stuff((select ',''' +cast(item.OCRTEXT as varchar(MAX))+'''' from T_QR_FOLDER_ITEM_WSDA as item where item.OWNER_ID=ws.ID group by cast(item.OCRTEXT as varchar(MAX)) for xml  path('')
+        ),1,1,'') as item) AS OCRTEXT, RETENTION_PERIOD, FOLDER_NO AS 'fNo', DOC_EXIST AS 'docExist', PAGE_COUNT, BOX_NO, SECURITY_CLASSIFICATION, BZ,
+           ITEM_TITLES, NOTES, 
+           (select stuff((select ',''' +cast(item.DOCUMENT_NO as varchar(MAX))+'''' from T_QR_FOLDER_ITEM_WSDA as item where item.OWNER_ID=ws.ID group by cast(item.DOCUMENT_NO as varchar(MAX)) for xml  path('')
+        ),1,1,'') as item) AS DOCUMENT_NO, 
+           (select stuff((select ',''' +cast(item.DUTY_PERSON as varchar(MAX))+'''' from T_QR_FOLDER_ITEM_WSDA as item where item.OWNER_ID=ws.ID group by cast(item.DUTY_PERSON as varchar(MAX)) for xml  path('')
+        ),1,1,'') as item) AS DUTY_PERSON
+FROM         T_QR_FOLDER_WSDA ws
+/*------文书案卷*/
+		</subselect>
+		<synchronize table="T_QR_FILE_WSDA"/>
+		<synchronize table="T_QR_FOLDER_WSDA"/>
+		<composite-id>
+			<key-property name="id" column="ID" type="string" />
+		</composite-id>
+
+		<property name="ref" column="ref" type="string" />
+		<property name="boxNo" column="BOX_NO" type="string" />
+		<property name="pageCount" column="PAGE_COUNT" type="string" />
+		<property name="title" column="TITLE" type="string" />
+		<property name="archiveTypeId" column="archiveTypeId" type="string" />
+		<property name="filingDept" column="filingDept" type="string" />
+		<property name="fondsCode" column="fondsCode" type="string" />
+		<property name="createUser" column="createUser" type="string" />
+		<property name="cretaeDate" column="cretaeDate" type="string" />
+		<property name="archiveTypeName" column="archiveTypeName" type="string" />
+		<property name="modiyUser" column="modiyUser" type="string" />
+		<property name="modiyDate" column="modiyDate" type="string" />
+		<property name="deleted" column="isDelete" type="boolean" />
+		<property name="yearCode" column="yearCode" type="string" />
+		<property name="archiveType" column="archiveType" type="string" />
+		<property name="className" column="className" type="string" />
+		<property name="ocrtext" column="OCRTEXT" type="text" />
+		<property name="retentionPeriod" column="RETENTION_PERIOD" type="string" />
+		<property name="securityClassification" column="SECURITY_CLASSIFICATION" type="string" />
+		<property name="bz" column="BZ" type="string" />
+		<property name="status" column="status" type="string" />
+		<property name="fNo" column="fNo" type="string" />
+		<property name="docExist" column="docExist" type="string" />
+		<property name="itemTitles" column="ITEM_TITLES" type="string"/>
+		<property name="notes" column="Notes" type="string"/>
+		<property name="documentNo" column="DOCUMENT_NO" type="string"/>
+		<property name="dutyPerson" column="DUTY_PERSON" type="string"/>
+	</class>
+</hibernate-mapping>

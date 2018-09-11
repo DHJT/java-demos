@@ -16,6 +16,7 @@
     <module>demo-util</module>
     <module>demo-extr</module>
     <module>demo-spring</module>
+    <module>demo-hibernateAndHSearch</module>
   </modules>
 
 	<properties>

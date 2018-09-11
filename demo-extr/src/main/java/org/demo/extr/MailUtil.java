@@ -47,7 +47,7 @@ public class MailUtil {
     private static String SEND_PWD = "fyftiocvpbpcdcfi";
     // 建立会话
     private static MimeMessage message;
-    private static Session s;
+    private static Session session;
 
     /*
      * 初始化方法
@@ -71,13 +71,13 @@ public class MailUtil {
 			e.printStackTrace();
 		}
 	    // 设置信任所有的主机
-        s =  Session.getDefaultInstance(props, new Authenticator(){
+	    session =  Session.getDefaultInstance(props, new Authenticator(){
               @Override
               protected PasswordAuthentication getPasswordAuthentication() {
                   return new PasswordAuthentication(SEND_UNAME, SEND_PWD);
               }});
-        s.setDebug(true);
-        message = new MimeMessage(s);
+	    session.setDebug(true);
+        message = new MimeMessage(session);
     }
 
     /**
@@ -105,7 +105,7 @@ public class MailUtil {
             // 邮件内容,也可以使纯文本"text/plain"
             message.setContent(content, "text/html;charset=GBK");
             message.saveChanges();
-            Transport transport = s.getTransport("smtp");
+            Transport transport = session.getTransport("smtp");
             // smtp验证，就是你用来发邮件的邮箱用户名密码
             transport.connect(VALUE_SMTP, SEND_UNAME, SEND_PWD);
             // 发送
@@ -118,7 +118,7 @@ public class MailUtil {
             e.printStackTrace();
         }
     }
-    
+
     /**
      * 异步发送邮件（暂时还没有完成）
      * @since JDK1.8
@@ -135,7 +135,7 @@ public class MailUtil {
 			executorService.shutdown();
 		}
 	}
-	
+
 	/**
      * 发送邮件
      * @param from 发件人
@@ -149,7 +149,7 @@ public class MailUtil {
     public static boolean sendMail(String from, String[] to, String[] copyto, String subject, String content, String[] fileList) {
         boolean success = true;
         try {
-        	MimeMessage mimeMsg = new MimeMessage(s);
+        	MimeMessage mimeMsg = new MimeMessage(session);
         	MimeMultipart mp = new MimeMultipart();
 
             // 自定义发件人昵称
@@ -192,7 +192,7 @@ public class MailUtil {
             mimeMsg.saveChanges();
             // 发送邮件
 //            if (props.get("mail.smtp.auth").equals("true")) {
-                Transport transport = s.getTransport("smtp");
+                Transport transport = session.getTransport("smtp");
 //                transport.connect((String)props.get("mail.smtp.host"), (String)props.get("username"), (String)props.get("password"));
                 transport.connect(VALUE_SMTP, SEND_UNAME, SEND_PWD);
 //              transport.sendMessage(mimeMsg, mimeMsg.getRecipients(Message.RecipientType.TO));
@@ -212,7 +212,7 @@ public class MailUtil {
         }
         return success;
     }
-    
+
     public static String getMailList(String[] mailArray) {
         StringBuffer toList = new StringBuffer();
         int length = mailArray.length;
@@ -238,7 +238,8 @@ public class MailUtil {
         String subject = "测试一下";
         String content = "这是邮件内容，仅仅是测试，不需要回复.";
         String[] fileList = new String[1];
-        fileList[0] = "C:\\Note-DH\\server.xml";
+//        fileList[0] = "C:\\Note-DH\\server.xml";
+        fileList[0] = "C:/Workspaces/TestTemp/0.jpg";
         sendMail(from, to, copyto, subject, content, fileList);
     }
 }

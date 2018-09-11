@@ -1,5 +1,6 @@
 package org.demo.spring;
 
+import org.demo.spring.bean.Student;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

@@ -10,12 +10,12 @@
     <aop:aspectj-autoproxy/>
 
    <!-- Definition for student bean -->
-   <bean id="student" class="org.demo.spring.Student">
+   <bean id="student" class="org.demo.spring.bean.Student">
       <property name="name"  value="Zara" />
       <property name="age"  value="11"/>      
    </bean>
 
    <!-- Definition for logging aspect -->
-   <bean id="logging" class="org.demo.spring.Logging"/> 
+   <bean id="logging" class="org.demo.spring.aop.Logging"/> 
 
 </beans>

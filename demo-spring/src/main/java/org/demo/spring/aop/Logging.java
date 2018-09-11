@@ -1,4 +1,4 @@
-package org.demo.spring;
+package org.demo.spring.aop;
 
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -13,7 +13,7 @@ public class Logging {
     *  all the methods available. So advice will be called
     *  for all the methods.
     */
-   @Pointcut("execution(* com.tutorialspoint.*.*(..))")
+   @Pointcut("execution(* org.demo.spring.bean.*.*(..))")
    private void selectAll(){}
    /**
     * This is the method which I would like to execute

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.MariaDBDialect</property>
+		<property name="hibernate.connection.driver_class">org.mariadb.jdbc.Driver</property>
+<!-- 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property> -->
+<!-- 		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property> -->
+
+		<!-- Assume test is the database name -->
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">123456</property>
+<!-- 		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=qrda_gass;</property> -->
+<!-- 		<property name="hibernate.connection.username">sa</property> -->
+<!-- 		<property name="hibernate.connection.password">Shjcyyww648</property> -->
+		<property name="show_sql">true</property>
+		<property name="format">true</property>
+		<property name="hbm2ddl.auto">update</property>
+		<property name="hibernate.search.default.directory_provider">filesystem</property>
+		<property name="hibernate.search.default.indexBase">C:\Workspaces\TestTemp\hibernatesearch</property>
+
+		<!-- List of XML mapping files -->
+<!-- 		<mapping resource="org/demo/hibernateAndHSearch/bean/LuceneBean.hbm.xml" /> -->
+<!-- 		<mapping resource="org/demo/hibernateAndHSearchbean/LuceneBean.hbm.xml" /> -->
+		<mapping class="org.demo.hibernateAndHSearch.bean.Book"/>
+		<mapping class="org.demo.hibernateAndHSearch.bean.Author"/>
+		<mapping class="org.demo.hibernateAndHSearch.bean.Employee"/>
+
+	</session-factory>
+</hibernate-configuration> 
