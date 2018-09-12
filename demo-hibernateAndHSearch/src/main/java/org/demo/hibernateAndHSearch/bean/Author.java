@@ -7,12 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.search.annotations.Field;
 @Entity
 @Table(name = "T_AUTHOR")
 public class Author implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
+
+	@Field
 	@Column(name = "name")
 	private String name;
 

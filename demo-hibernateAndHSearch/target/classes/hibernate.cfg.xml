@@ -16,18 +16,36 @@
 <!-- 		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=qrda_gass;</property> -->
 <!-- 		<property name="hibernate.connection.username">sa</property> -->
 <!-- 		<property name="hibernate.connection.password">Shjcyyww648</property> -->
+
+		<!-- 设置c3p0连接池提供商hibernate.connection.provider_class org.hibernate.connection.C3P0ConnectionProvider -->
+<!-- 		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property> -->
+		<!-- c3p0连接池配置信息 -->
+<!-- 		<property name="c3p0.min_size">5</property> -->
+<!-- 		<property name="c3p0.max_size">20</property> -->
+<!-- 		<property name="c3p0.timeout">120</property> -->
+<!-- 		<property name="c3p0.idle_test_period">3000</property> -->
+		<!-- 配置显示执行的sql语句及对sql语句格式化 -->
 		<property name="show_sql">true</property>
 		<property name="format">true</property>
+		<!-- ddl策略 -->
 		<property name="hbm2ddl.auto">update</property>
+		
+		<!-- hibernate.search设置 -->
 		<property name="hibernate.search.default.directory_provider">filesystem</property>
 		<property name="hibernate.search.default.indexBase">C:\Workspaces\TestTemp\hibernatesearch</property>
+<!-- 		<property name="hibernate.search.default.indexBase">./build/indexes</property> -->
+<!--     	<property name="hibernate.search.default.directory_provider">org.hibernate.search.store.RAMDirectoryProvider</property> -->
 
+		<!-- 设置事务自动提交 -->
+		<property name="hibernate.connection.autocommit">true</property>
 		<!-- List of XML mapping files -->
 <!-- 		<mapping resource="org/demo/hibernateAndHSearch/bean/LuceneBean.hbm.xml" /> -->
 <!-- 		<mapping resource="org/demo/hibernateAndHSearchbean/LuceneBean.hbm.xml" /> -->
+		<!-- classes mapping -->
 		<mapping class="org.demo.hibernateAndHSearch.bean.Book"/>
 		<mapping class="org.demo.hibernateAndHSearch.bean.Author"/>
 		<mapping class="org.demo.hibernateAndHSearch.bean.Employee"/>
+<!-- 		<mapping class="org.demo.hibernateAndHSearch.bean.Pageinfo"/> -->
 
 	</session-factory>
 </hibernate-configuration> 

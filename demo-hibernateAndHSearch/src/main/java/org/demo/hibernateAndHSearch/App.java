@@ -14,8 +14,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 
 /**
- * Hello world!
- *
+ * 测试可以使用
+ * @author DHJT 2018年9月12日-下午3:33:04
  */
 public class App {
 
