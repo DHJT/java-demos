@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -9,7 +8,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>demo-jartest</artifactId>
-	<name>${project.artifactId}</name>
+	<name>${project.arstifactId}</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -17,6 +16,7 @@
 		<ip2region.version>1.4</ip2region.version>
 		<hutool.version>4.1.1</hutool.version>
 		<junit.version>4.12</junit.version>
+		<testng.version>6.14.3</testng.version>
 		<commons.version>3.5</commons.version>
 		<pdfbox.version>2.0.9</pdfbox.version>
 	</properties>
@@ -25,11 +25,11 @@
 	<dependencies>
 	
 	    <!-- 核心模块 -->
-        <dependency>
-            <groupId>com.dhjt</groupId>
-            <artifactId>demo-util</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
+<!--         <dependency> -->
+<!--             <groupId>com.dhjt</groupId> -->
+<!--             <artifactId>demo-util</artifactId> -->
+<!--             <version>${project.parent.version}</version> -->
+<!--         </dependency> -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
@@ -133,8 +133,14 @@
 		    <artifactId>jedis</artifactId>
 		    <version>2.9.0</version>
 		</dependency>
-		
 
+		<dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

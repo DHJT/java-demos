@@ -29,7 +29,7 @@ import org.apache.pdfbox.text.PDFTextStripper;
 
 /**
  * pdfbox测试
- * 可以参考https://www.yiibai.com/pdfbox/
+ * reference https://www.yiibai.com/pdfbox/
  * 1.加密、解密
  * 2.权限
  * 3.文档属性信息:xmpbox
@@ -46,7 +46,7 @@ public class PdfboxTest {
     public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     /**
-     * 设置权限
+     * Set the permissions
      * @param permissions
      */
     public static void setAccessPermission(AccessPermission permissions) {
@@ -60,7 +60,7 @@ public class PdfboxTest {
      * 获取格式化后的时间信息
      *
      * @param dar
-     *            时间信息
+     * 时间信息
      * @return
      * @throws Exception
      */

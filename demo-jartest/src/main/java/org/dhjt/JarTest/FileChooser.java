@@ -12,7 +12,7 @@ public class FileChooser {
     public static void main(String[] args) {
     	String[] saveType = {"txt","java"};
         JFileChooser fc = new JFileChooser("D:");
-        //fc.setCurrentDirectory(new File("e:/"));//设置默认目录 打开直接默认E盘
+        fc.setCurrentDirectory(new File("e:/"));//设置默认目录 打开直接默认E盘
         //是否可多选
         fc.setMultiSelectionEnabled(false);
         //选择模式，可选择文件和文件夹

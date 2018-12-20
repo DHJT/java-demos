@@ -17,6 +17,7 @@
     <module>demo-extr</module>
     <module>demo-spring</module>
     <module>demo-hibernateAndHSearch</module>
+    <module>demo-java</module>
   </modules>
 
 	<properties>
@@ -29,19 +30,19 @@
 	</properties>
 	<dependencies>
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
-		<dependency>
-		    <groupId>org.testng</groupId>
-		    <artifactId>testng</artifactId>
-		    <version>${testng.version}</version>
-		    <scope>test</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 		    <groupId>org.testng</groupId> -->
+<!-- 		    <artifactId>testng</artifactId> -->
+<!-- 		    <version>${testng.version}</version> -->
+<!-- 		    <scope>test</scope> -->
+<!-- 		</dependency> -->
         
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>junit</groupId> -->
+<!-- 			<artifactId>junit</artifactId> -->
+<!-- 			<version>${junit.version}</version> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
 	</dependencies>
 	
 	<dependencyManagement>
