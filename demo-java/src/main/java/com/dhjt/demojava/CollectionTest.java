@@ -36,11 +36,12 @@ public class CollectionTest {
 		int sum = 0;
 		List<String> aList = new ArrayList<String>();
 
-		map.forEach((k, v) -> System.out.println("key: " + k + "; value: " + v));
-//		map.forEach((k, v) -> {
-//			aList.add(k);
-//			System.out.println("key: " + k + "; value: " + v);
-//		});
+		// lambda表达式对变量是封闭的，
+		map.forEach((k, v) -> {
+			aList.add(k);
+			System.out.println("key: " + k + "; value: " + v);
+		});
+		aList.forEach((v) -> System.out.println("value: " + v));
 
 		List<String> list = new ArrayList<String>();
 		list.add("A");

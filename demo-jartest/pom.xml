@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.dhjt</groupId>
@@ -18,29 +20,34 @@
 		<junit.version>4.12</junit.version>
 		<testng.version>6.14.3</testng.version>
 		<commons.version>3.5</commons.version>
+		<commons-codec.version>1.11</commons-codec.version>
+		<commons-beanutils.version>1.9.3</commons-beanutils.version>
+		<commons-math3.version>3.6.1</commons-math3.version>
+		<commons-compress.version>1.18</commons-compress.version>
+		<commons-configuration2.version>2.4</commons-configuration2.version>
+		<commons-dbutils.version>1.7</commons-dbutils.version>
 		<pdfbox.version>2.0.9</pdfbox.version>
 	</properties>
 
-
 	<dependencies>
-	
-	    <!-- 核心模块 -->
-<!--         <dependency> -->
-<!--             <groupId>com.dhjt</groupId> -->
-<!--             <artifactId>demo-util</artifactId> -->
-<!--             <version>${project.parent.version}</version> -->
-<!--         </dependency> -->
+
+		<!-- 核心模块 -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.dhjt</groupId> -->
+		<!-- <artifactId>demo-util</artifactId> -->
+		<!-- <version>${project.parent.version}</version> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>${commons.version}</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
 		<dependency>
-		    <groupId>net.coobird</groupId>
-		    <artifactId>thumbnailator</artifactId>
-		    <version>0.4.8</version>
+			<groupId>net.coobird</groupId>
+			<artifactId>thumbnailator</artifactId>
+			<version>0.4.8</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
@@ -49,49 +56,49 @@
 			<artifactId>commons-text</artifactId>
 			<version>1.4</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
 		<dependency>
-		    <groupId>org.apache.pdfbox</groupId>
-		    <artifactId>pdfbox</artifactId>
-		    <version>${pdfbox.version}</version>
+			<groupId>org.apache.pdfbox</groupId>
+			<artifactId>pdfbox</artifactId>
+			<version>${pdfbox.version}</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.apache.pdfbox/xmpbox -->
 		<dependency>
-		    <groupId>org.apache.pdfbox</groupId>
-		    <artifactId>xmpbox</artifactId>
-		    <version>${pdfbox.version}</version>
+			<groupId>org.apache.pdfbox</groupId>
+			<artifactId>xmpbox</artifactId>
+			<version>${pdfbox.version}</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/net.oschina.likaixuan/excelutil -->
 		<dependency>
-		    <groupId>net.oschina.likaixuan</groupId>
-		    <artifactId>excelutil</artifactId>
-		    <version>1.5.5</version>
+			<groupId>net.oschina.likaixuan</groupId>
+			<artifactId>excelutil</artifactId>
+			<version>1.5.5</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on -->
-<!-- 		<dependency> -->
-<!-- 		    <groupId>org.bouncycastle</groupId> -->
-<!-- 		    <artifactId>bcprov-jdk15on</artifactId> -->
-<!-- 		    <version>1.59</version> -->
-<!-- 		</dependency> -->
-		
+		<!-- <dependency> -->
+		<!-- <groupId>org.bouncycastle</groupId> -->
+		<!-- <artifactId>bcprov-jdk15on</artifactId> -->
+		<!-- <version>1.59</version> -->
+		<!-- </dependency> -->
+
 		<!-- https://mvnrepository.com/artifact/org.bouncycastle/bcpkix-jdk15on -->
 		<dependency>
-		    <groupId>org.bouncycastle</groupId>
-		    <artifactId>bcpkix-jdk15on</artifactId>
-		    <version>1.59</version>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcpkix-jdk15on</artifactId>
+			<version>1.59</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.bouncycastle/bcmail-jdk15on -->
 		<dependency>
-		    <groupId>org.bouncycastle</groupId>
-		    <artifactId>bcmail-jdk15on</artifactId>
-		    <version>1.59</version>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcmail-jdk15on</artifactId>
+			<version>1.59</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.lionsoul/ip2region -->
 		<dependency>
 			<groupId>org.lionsoul</groupId>
@@ -119,28 +126,70 @@
 			<artifactId>joor-java-8</artifactId>
 			<version>0.9.8</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/net.sourceforge.jexcelapi/jxl -->
 		<dependency>
-		    <groupId>net.sourceforge.jexcelapi</groupId>
-		    <artifactId>jxl</artifactId>
-		    <version>2.6.12</version>
+			<groupId>net.sourceforge.jexcelapi</groupId>
+			<artifactId>jxl</artifactId>
+			<version>2.6.12</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons-codec.version}</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+		<dependency>
+		    <groupId>commons-beanutils</groupId>
+		    <artifactId>commons-beanutils</artifactId>
+		    <version>${commons-beanutils.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-math3</artifactId>
+		    <version>${commons-math3.version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-compress -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-compress</artifactId>
+		    <version>${commons-compress.version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-configuration2</artifactId>
+		    <version>${commons-configuration2.version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/commons-dbutils/commons-dbutils -->
+		<dependency>
+		    <groupId>commons-dbutils</groupId>
+		    <artifactId>commons-dbutils</artifactId>
+		    <version>${commons-dbutils.version}</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
 		<dependency>
-		    <groupId>redis.clients</groupId>
-		    <artifactId>jedis</artifactId>
-		    <version>2.9.0</version>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.9.0</version>
 		</dependency>
 
 		<dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
-            <scope>test</scope>
-        </dependency>
-        
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
+			<scope>test</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

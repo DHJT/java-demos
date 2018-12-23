@@ -3,6 +3,8 @@ package org.dhjt.JarTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.dhjt.JarTest.App;
+
 public class AppNgTest {
 
 	@Test()
