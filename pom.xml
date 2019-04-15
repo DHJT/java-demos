@@ -7,7 +7,7 @@
 	<artifactId>demo-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	
+
 	<modules>
 		<module>demo-jartest</module>
 		<module>demo-solrj</module>
@@ -30,6 +30,7 @@
 		<testng.version>6.14.3</testng.version>
 		<servlet-api.version>3.1.0</servlet-api.version>
 	</properties>
+	
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<!-- <dependency> -->

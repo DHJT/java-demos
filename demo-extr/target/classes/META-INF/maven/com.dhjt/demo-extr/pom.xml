@@ -7,9 +7,7 @@
     <artifactId>demo-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.dhjt</groupId>
   <artifactId>demo-extr</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>demo-extr</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -46,8 +44,17 @@
 	    <artifactId>commons-lang3</artifactId>
 	    <version>3.8</version>
 	</dependency>
-	
-	
+	<!-- https://mvnrepository.com/artifact/org.docx4j/docx4j -->
+	<dependency>
+	    <groupId>org.docx4j</groupId>
+	    <artifactId>docx4j</artifactId>
+	    <version>6.1.2</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.webjars</groupId>
+	    <artifactId>jquery</artifactId>
+	    <version>3.3.1-1</version>
+	</dependency>
   	
     <dependency>
       <groupId>junit</groupId>

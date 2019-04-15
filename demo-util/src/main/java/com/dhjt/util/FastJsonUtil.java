@@ -16,6 +16,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.serializer.PropertyFilter;
 import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
+import com.alibaba.fastjson.util.TypeUtils;
+import com.dhjt.bean.User;
 
 /**
  * FastJson工具类
@@ -101,7 +103,6 @@ public class FastJsonUtil {
 //			JSONObject.fromObject(object, null).toString();
 			return JSON.toJSONString(object, prettyFormat);
 		}
-
 	}
 
 	// 指定的字段才能显示出来
@@ -221,9 +222,15 @@ public class FastJsonUtil {
 		dataMap.put("examineDoc", "孙龙");
 		dataMap.put("examineDate", "2018-11-23");
 		dataMap.put("verifyDoc", "张飞");
+		User user = new User();
+		user.setId("123");
+		user.setName("slh");
+		user.setEmail("dhjt11@qq.com");
+		dataMap.put("user", user);
 		String jsonString = JSON.toJSONString(dataMap);
 		System.out.println(jsonString);
 		Map object = getObject(jsonString, Map.class);
 		System.out.println(object.get("age"));
+		System.out.println("2019年1月1日下午11:21:51->" + TypeUtils.castToSqlDate("2018-12-12").getMinutes());
 	}
 }
