@@ -13,7 +13,7 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tika.version>1.18</tika.version>
+		<tika.version>1.24.1</tika.version>
 	</properties>
 	<dependencies>
 		<dependency>
